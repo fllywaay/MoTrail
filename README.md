@@ -811,7 +811,7 @@ For more display effects, see:
 
 5. Scroll down, click `Environment variables (advanced)`, then add a variable like the below:
 
-   > Variable name = `PYTHON_VERSION`, Value = `3.7`
+   > Variable name = `PYTHON_VERSION`, Value = `3.10`
 
 6. Click `Save and Deploy`
 
