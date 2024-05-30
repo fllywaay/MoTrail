@@ -1,9 +1,6 @@
 // const
 const MAPBOX_TOKEN =
-    // For security reasons, please avoid using the default public token provided by Mapbox as much as possible.
-  // Instead, manually add a new token and apply URL restrictions.
-  // (please refer to https://github.com/yihong0618/running_page/issues/643#issuecomment-2042668580)
-  'pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ';
+    'pk.eyJ1IjoicGVuZ2lubWEiLCJhIjoiY2tlOWQ0bTM1MjR2YzJ0cDhneWsxaDQ0bSJ9.bzLOkWkgVxV3J6xl8OXGdg';
 const MUNICIPALITY_CITIES_ARR = [
   '北京市',
   '上海市',
@@ -31,17 +28,13 @@ const USE_GOOGLE_ANALYTICS = false;
 const GOOGLE_ANALYTICS_TRACKING_ID = '';
 
 // styling: set to `true` if you want dash-line route
-const USE_DASH_LINE = false;
+const USE_DASH_LINE = true;
 // styling: route line opacity: [0, 1]
-const LINE_OPACITY = 0.6;
+const LINE_OPACITY = 0.4;
 // styling: map height
 const MAP_HEIGHT = 600;
 //set to `false` if you want to hide the road label characters
 const ROAD_LABEL_DISPLAY = true;
-//set to `true` if you want to display only the routes without showing the map.
-const PRIVACY_MODE = false;
-//set to `false` if you want to make light off as default, only effect when `PRIVACY_MODE` = false
-const LIGHTS_ON = true;
 
 // IF you outside China please make sure IS_CHINESE = false
 const IS_CHINESE = true;
@@ -110,8 +103,6 @@ export {
   USE_DASH_LINE,
   LINE_OPACITY,
   MAP_HEIGHT,
-  PRIVACY_MODE,
-  LIGHTS_ON,
 };
 
 const nike = 'rgb(224,237,94)';
@@ -119,27 +110,30 @@ const yellow = 'rgb(224,237,94)';
 const green = 'rgb(0,237,94)';
 const pink = 'rgb(237,85,219)';
 const cyan = 'rgb(112,243,255)';
-const IKB = 'rgb(0,47,167)';
-const dark_vanilla = 'rgb(228,212,220)';
+const IKB = '#027512';
+const wpink = '#150AAD';
 const gold = 'rgb(242,190,69)';
 const purple = 'rgb(154,118,252)';
 const veryPeri = 'rgb(105,106,173)';//长春花蓝
 const red = 'rgb(255,0,0)';//大红色
+const riding = 'rgb(0,150,200)';
+const dline = 'rgb(50,50,50)';
+const dblue = '#160075';  
 
-// If your map has an offset please change this line
-// issues #92 and #198
-export const NEED_FIX_MAP = false;
-export const MAIN_COLOR = green;
+
+
+export const NEED_FIX_MAP = false; // 如果您的地图有偏移，请更改此行 issues #92 and #198
+export const MAIN_COLOR = dblue; //左菜单2级
 export const RUN_COLOR = yellow;
-export const RIDE_COLOR = green;
+export const RIDE_COLOR = riding;
 export const VIRTUAL_RIDE_COLOR = veryPeri;
-export const HIKE_COLOR = pink;
+export const HIKE_COLOR = IKB;
 export const SWIM_COLOR = gold;
 export const ROWING_COLOR = cyan;
 export const ROAD_TRIP_COLOR = purple;
-export const FLIGHT_COLOR = dark_vanilla;
-export const PROVINCE_FILL_COLOR = '#47b8e0';
-export const COUNTRY_FILL_COLOR = dark_vanilla;
+export const FLIGHT_COLOR = wpink;
+export const PROVINCE_FILL_COLOR = dblue; //省份填充颜色
+export const COUNTRY_FILL_COLOR = wpink;
 export const KAYAKING_COLOR = red;
-export const SNOWBOARD_COLOR = dark_vanilla;
+export const SNOWBOARD_COLOR = wpink;
 export const TRAIL_RUN_COLOR = IKB;
