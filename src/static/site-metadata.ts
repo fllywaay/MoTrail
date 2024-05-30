@@ -11,10 +11,10 @@ interface ISiteMetadataResult {
 }
 
 const data: ISiteMetadataResult = {
-  siteTitle: '运动地图',
+  siteTitle: '运动轨迹',
   siteUrl: '',
   logo: 'https://avatars.githubusercontent.com/u/87158446?v=4',
-  description: 'Flyway的运动地图',
+  description: 'Flyway的运动轨迹',
   keywords: 'workouts, running, cycling, riding, roadtrip, hiking, swimming',
   navLinks: [
     {
