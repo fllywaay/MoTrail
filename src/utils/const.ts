@@ -1,6 +1,9 @@
 // const
 const MAPBOX_TOKEN =
-    'pk.eyJ1IjoicGVuZ2lubWEiLCJhIjoiY2tlOWQ0bTM1MjR2YzJ0cDhneWsxaDQ0bSJ9.bzLOkWkgVxV3J6xl8OXGdg';
+    // For security reasons, please avoid using the default public token provided by Mapbox as much as possible.
+  // Instead, manually add a new token and apply URL restrictions.
+  // (please refer to https://github.com/yihong0618/running_page/issues/643#issuecomment-2042668580)
+  'pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ';
 const MUNICIPALITY_CITIES_ARR = [
   '北京市',
   '上海市',
@@ -28,13 +31,17 @@ const USE_GOOGLE_ANALYTICS = false;
 const GOOGLE_ANALYTICS_TRACKING_ID = '';
 
 // styling: set to `true` if you want dash-line route
-const USE_DASH_LINE = true;
+const USE_DASH_LINE = false;
 // styling: route line opacity: [0, 1]
-const LINE_OPACITY = 0.4;
+const LINE_OPACITY = 0.6;
 // styling: map height
 const MAP_HEIGHT = 600;
 //set to `false` if you want to hide the road label characters
 const ROAD_LABEL_DISPLAY = true;
+//set to `true` if you want to display only the routes without showing the map.
+const PRIVACY_MODE = false;
+//set to `false` if you want to make light off as default, only effect when `PRIVACY_MODE` = false
+const LIGHTS_ON = true;
 
 // IF you outside China please make sure IS_CHINESE = false
 const IS_CHINESE = true;
@@ -85,6 +92,26 @@ const RUN_TITLES = {
   FLIGHT_TITLE,
   SNOWBOARD_TITLE,
   SKI_TITLE,
+};
+
+export {
+  USE_GOOGLE_ANALYTICS,
+  GOOGLE_ANALYTICS_TRACKING_ID,
+  CHINESE_LOCATION_INFO_MESSAGE_FIRST,
+  CHINESE_LOCATION_INFO_MESSAGE_SECOND,
+  MAPBOX_TOKEN,
+  MUNICIPALITY_CITIES_ARR,
+  MAP_LAYER_LIST,
+  IS_CHINESE,
+  ROAD_LABEL_DISPLAY,
+  INFO_MESSAGE,
+  RUN_TITLES,
+  USE_ANIMATION_FOR_GRID,
+  USE_DASH_LINE,
+  LINE_OPACITY,
+  MAP_HEIGHT,
+  PRIVACY_MODE,
+  LIGHTS_ON,
 };
 
 export {
