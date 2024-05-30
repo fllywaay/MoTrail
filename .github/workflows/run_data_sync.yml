@@ -31,10 +31,10 @@ env:
   GITHUB_EMAIL: fllywaay@gmail.com # change to yours
 
   # IGNORE_BEFORE_SAVING: True # if you want to ignore some data before saving, set this to True
-  IGNORE_START_END_RANGE: 20 # Unit meter
+  IGNORE_START_END_RANGE: 100 # Unit meter
   # Dont making this huge, just picking points you needing. https://developers.google.com/maps/documentation/utilities/polylineutility using this tool to making your polyline
-  IGNORE_POLYLINE: "uzsfCcfqrTsc{@ezwB"
-  IGNORE_RANGE: 20 # Unit meter
+  IGNORE_POLYLINE: "mysfC{eqrT"
+  IGNORE_RANGE: 100 # Unit meter
   SAVE_DATA_IN_GITHUB_CACHE: false # if you deploy in the vercal, check the README
   DATA_CACHE_PREFIX: 'track_data'
   BUILD_GH_PAGES: true # 如果您不需要GitHub页面，请将其设置为`false'
