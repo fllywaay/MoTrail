@@ -30,7 +30,7 @@ env:
   GITHUB_NAME: fllywaay  # change to yours
   GITHUB_EMAIL: fllywaay@gmail.com # change to yours
 
-  IGNORE_BEFORE_SAVING: True # 如果您想在保存之前忽略某些数据，请将此设置为True
+  # IGNORE_BEFORE_SAVING: True # 如果您想在保存之前忽略某些数据，请将此设置为True
   IGNORE_START_END_RANGE: 500 # Unit meter
   # Dont making this huge, just picking points you needing. https://developers.google.com/maps/documentation/utilities/polylineutility using this tool to making your polyline
   IGNORE_POLYLINE: "gbufC}uorTvCrG~RgQcJiH??"
