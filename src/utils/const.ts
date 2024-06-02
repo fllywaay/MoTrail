@@ -115,19 +115,19 @@ export {
 };
 
 const nike = 'rgb(224,237,94)';
-const yellow = 'rgb(224,237,94)';
+const yellow = '#13CC2C';
 const green = '#2002A3';
 const pink = 'rgb(237,85,219)';
 const cyan = 'rgb(112,243,255)';
-const IKB = '#027512';
+const IKB = '#FDA500';
 const wpink = '#150AAD';
 const gold = 'rgb(242,190,69)';
 const purple = 'rgb(154,118,252)';
 const veryPeri = 'rgb(105,106,173)';//长春花蓝
-const red = 'rgb(255,0,0)';//大红色
+const red = 'rgb(224,237,94)';//大红色
 const riding = 'rgb(0,150,200)';
 const dline = 'rgb(50,50,50)';
-const dblue = '#160075';  
+const dblue = '#540BCA';  
 
 
 
