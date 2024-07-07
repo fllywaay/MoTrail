@@ -26,7 +26,7 @@ env:
   # please change to your own config.
   RUN_TYPE: strava # support strava/nike/garmin/garmin_cn/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/codoon, Please change the 'pass' it to your own
   ATHLETE: FlyWay的运动轨迹
-  TITLE: Workouts
+  TITLE: FlyWay的运动轨迹
   MIN_GRID_DISTANCE: 10 # change min distance here
   TITLE_GRID: 超过 10km 的运动轨迹 # also here
   GITHUB_NAME: fllywaay  # change to yours
@@ -39,7 +39,7 @@ env:
   IGNORE_RANGE: 200 # Unit meter
   SAVE_DATA_IN_GITHUB_CACHE: false # if you deploy in the vercal, check the README
   DATA_CACHE_PREFIX: 'track_data'
-  BUILD_GH_PAGES: false # 如果您不需要GitHub页面，请将其设置为`false'
+  BUILD_GH_PAGES: true # 如果您不需要GitHub页面，请将其设置为`false'
 
 jobs:
   sync:
