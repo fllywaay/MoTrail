@@ -3060,6 +3060,21 @@
 "streak": 4
 },
 {
+"run_id": 13064874818,
+"name": "\u6597\u95e8\u4e00\u4e2d-\u9ec4\u573a\u5c71\u9876-\u897f\u5751",
+"distance": 8083.7,
+"moving_time": "2:41:15",
+"type": "Hike",
+"start_date": "2024-12-06 06:31:49+00:00",
+"start_date_local": "2024-12-06 14:31:49",
+"location_country": "\u6597\u95e8\u533a\u7b2c\u4e00\u4e2d\u5b66, \u9ec3\u6768\u5927\u9053, \u6597\u95e8\u533a, \u73e0\u6d77\u5e02, \u5e7f\u4e1c\u7701, \u4e2d\u56fd",
+"summary_polyline": "ossfCihfrTDh@CNg@Hs@Xc@Kc@DS\\c@TO?KJM?QRg@TJN@n@KNWJGVSTG^ORUt@GFKA_@Oe@TQBIn@?^ENUJs@YSBCVY^?HO\\k@N]j@G@YRs@x@KVg@ZOZq@AENOD_Al@e@NMd@MHG^BFEHMFO?OJM@a@VM@m@b@BBCLI@IJm@HH??EMKSCSVLIAWJG?GHA?DSNf@V@DIBAJMDGJYD]V_@LBKZEVU\\E@KJAPUf@Kn@u@VGj@a@JBPKRAH]?WLELc@nBeAPQl@@JSp@o@FQl@g@PWVIb@i@RAPe@b@aACKFIHE|@j@X[GSFG?[FUh@WVCLMV{@@SiBmBeAR]i@GNGDu@G{AAKEYDkAa@SOy@MGKMFIAKN_@E[XIPWNQB?HWKURc@CGDEGMCe@LUAGNc@OSXOL_@UOv@IDQZKUSHIk@GLQKCI@FGHUQEPQIKp@W`@MYG?M\\ULKPEAISMTQIOBGQSO]NGCk@DwAMSFaAD{@COKMBEGYCWKS@GOECQLKAYY[JDIi@YISKEEK@EkAa@AIa@[GQM@EG]p@e@LaBXWAWD]d@]XK`@SJYZBj@GL]KeAMQTs@fB[XQFa@?k@Ng@f@g@Pw@LOL[JURM?o@h@ELDJ?f@P^BTWjAw@l@Gd@Bd@Nx@?PIB?IN?GJy@NBCECBJL?h@YAGFEAWQc@A}@BSb@]R]XeAQm@Es@BQJQbAi@CFEMDJSHFACOFN\\Ub@Qh@En@Uj@g@r@Mt@Yt@{AFSNU`@D`@Jd@@FYGOJW\\WLSJa@PGV_@PGn@Bl@Y`@Cx@]LOLo@ES@g@I[?_@CG?R?_AESD_@E]@SCMIAFYAm@CMU[B[Eg@V?AOLSDUTA?EQGISKk@Ho@S@AOVUHOKYFQ?IKQD[b@@fB|@l@rAVLP^`@RX?j@\\p@DCm@BG`@EJ[G}@m@i@n@g@B[EOHUHCh@o@\\Od@Fv@EPB^_@PGPMNc@RQ`@o@^i@FWv@c@h@m@TK^c@|@a@^KN?BGj@UT_@H{@Nk@n@mABmCv@qC@WSuAD}@Py@Fo@?YZw@PE`@XHGf@@RTx@?\\Vh@FR\\zApAH@Xb@ZNHMAIFKRSBKj@[\\^\\?JT",
+"average_heartrate": null,
+"average_speed": 0.836,
+"source": "strava",
+"streak": 5
+},
+{
 "run_id": 13063210436,
 "name": "2024-12-07\u7684\u9a91\u884c",
 "distance": 13699.9,
@@ -3072,7 +3087,7 @@
 "average_heartrate": 139.9,
 "average_speed": 5.076,
 "source": "strava",
-"streak": 1
+"streak": 6
 },
 {
 "run_id": 13063387675,
@@ -3087,7 +3102,7 @@
 "average_heartrate": 142.6,
 "average_speed": 4.954,
 "source": "strava",
-"streak": 1
+"streak": 6
 },
 {
 "run_id": 13064011229,
@@ -3102,6 +3117,6 @@
 "average_heartrate": 142.2,
 "average_speed": 4.947,
 "source": "strava",
-"streak": 1
+"streak": 6
 }
 ]
