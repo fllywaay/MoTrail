@@ -150,7 +150,7 @@ jobs:
 
 
       - name: Run sync Only GPX script
-       # if: env.RUN_TYPE == 'only_gpx'
+        if: env.RUN_TYPE == 'only_gpx'
         run: |
           python run_page/gpx_sync.py
 
