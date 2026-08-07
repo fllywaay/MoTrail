@@ -21,11 +21,15 @@ on:
       - run_page/tcx_sync.py
       - run_page/garmin_to_strava_sync.py
       - run_page/keep_to_strava_sync.py
+      - run_page/komoot_sync.py
+      - run_page/onelap_sync.py
       - requirements.txt
 
 env:
   # please change to your own config.
   RUN_TYPE: pass # support strava/nike/garmin/garmin_cn/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/codoon, Please change the 'pass' it to your own
+  SYNC_KOMOOT: true # 设为 true 启用 Komoot 自动同步
+  SYNC_ONELAP: true # 设为 true 启用 Onelap 自动同步
   ATHLETE: FlyWay的运动轨迹
   TITLE: FlyWay的运动轨迹
   MIN_GRID_DISTANCE: 10 # change min distance here
@@ -189,8 +193,20 @@ jobs:
         run: |
           python run_page/tulipsport_sync.py ${{ secrets.TULIPSPORT_TOKEN }} --with-gpx
 
+      - name: Run sync Komoot script
+        if: env.SYNC_KOMOOT == 'true'
+        run: |
+          python run_page/komoot_sync.py ${{ secrets.KOMOOT_EMAIL }} ${{ secrets.KOMOOT_PASSWORD }} --with-gpx
+          python run_page/gpx_sync.py
+
+      - name: Run sync Onelap script
+        if: env.SYNC_ONELAP == 'true'
+        run: |
+          python run_page/onelap_sync.py ${{ secrets.ONELAP_PHONE }} ${{ secrets.ONELAP_PASSWORD }} --with-fit
+          python run_page/fit_sync.py
+
       - name: Make svg GitHub profile
-        if: env.RUN_TYPE != 'pass'
+        if: env.RUN_TYPE != 'pass' || env.SYNC_KOMOOT == 'true' || env.SYNC_ONELAP == 'true'
         run: |
           python run_page/gen_svg.py --from-db --title "${{ env.TITLE }}" --type github --athlete "${{ env.ATHLETE }}" --special-distance 10 --special-distance2 20 --special-color yellow --special-color2 red --output assets/github.svg --use-localtime --min-distance 0.5
           python run_page/gen_svg.py --from-db --title "${{ env.TITLE_GRID }}" --type grid --athlete "${{ env.ATHLETE }}" --output assets/grid.svg --special-color yellow --special-color2 red --special-distance 20 --special-distance2 40 --use-localtime --min-distance "${{ env.MIN_GRID_DISTANCE }}"
