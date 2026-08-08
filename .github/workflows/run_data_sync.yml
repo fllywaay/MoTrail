@@ -201,6 +201,7 @@ jobs:
 
       - name: Run sync Onelap script
         if: env.SYNC_ONELAP == 'true'
+        continue-on-error: true
         run: |
           python run_page/onelap_sync.py ${{ secrets.ONELAP_PHONE }} ${{ secrets.ONELAP_PASSWORD }} --with-fit
           python run_page/fit_sync.py
