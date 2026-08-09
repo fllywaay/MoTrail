@@ -1,11 +1,13 @@
 # Onelap (顽鹿运动) sync script — rewritten 2026-08 for the new u.onelap.cn API.
 # The old www.onelap.cn/api/login + /analysis/list endpoints are dead.
-# New flow: POST /api/login -> token (+ session cookie), POST /api/otm/ride_record/list
-# -> ids, GET /api/otm/ride_record/analysis/{id} -> fileKey,
-# GET .../fit/{base64(fileKey)} -> FIT bytes.
-# IMPORTANT: the fit-download endpoint appears to require the session cookie set
-# during login *in addition to* the Authorization header, so we use a
-# requests.Session() throughout to carry cookies automatically.
+# New flow: POST /api/login -> token, POST /api/otm/ride_record/list -> ids,
+# GET /api/otm/ride_record/analysis/{id} -> fileKey,
+# GET .../fit_content/{base64(fileKey)} -> real FIT bytes.
+# NOTE: .../analysis/fit/{base64} (no "_content") looks similar but actually
+# returns a JSON array of per-second telemetry (used for the on-page charts),
+# not the binary file — confirmed by manual testing, don't use it here.
+# Only the Authorization header is required (no extra cookie needed),
+# verified against a manually-downloaded reference file (byte-for-byte match).
 
 import os
 import hashlib
@@ -17,7 +19,7 @@ from config import FIT_FOLDER
 LOGIN_URL = "https://u.onelap.cn/api/login"
 LIST_URL = "https://u.onelap.cn/api/otm/ride_record/list"
 ANALYSIS_URL = "https://u.onelap.cn/api/otm/ride_record/analysis/{}"
-FIT_URL = "https://u.onelap.cn/api/otm/ride_record/analysis/fit/{}"
+FIT_URL = "https://u.onelap.cn/api/otm/ride_record/analysis/fit_content/{}"
 
 
 class Onelap:
