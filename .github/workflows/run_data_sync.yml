@@ -211,12 +211,11 @@ jobs:
         run: |
           curl https://rclone.org/install.sh | sudo bash
           mkdir -p ~/.config/rclone
-          echo '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > ~/gdrive-sa.json
           cat > ~/.config/rclone/rclone.conf << EOF
           [gdrive]
           type = drive
           scope = drive
-          service_account_file = $HOME/gdrive-sa.json
+          token = ${{ secrets.GDRIVE_OAUTH_TOKEN }}
           root_folder_id = ${{ secrets.GDRIVE_FOLDER_ID }}
           EOF
 

@@ -293,7 +293,11 @@ class Track:
                 self.polyline_container.append([lat, lng])
         for record in fit["device_info_mesgs"]:
             if "device_index" in record and record["device_index"] == "creator":
-                self.source = f'{record["manufacturer"]} {record["garmin_product"]} fit'
+                # "garmin_product" is a Garmin-specific field name; non-Garmin
+                # devices (e.g. MAGENE) only have the generic "product" field.
+                product = record.get("garmin_product", record.get("product", "Unknown"))
+                manufacturer = record.get("manufacturer", "Unknown")
+                self.source = f'{manufacturer} {product} fit'
                 break
         if self.polyline_container:
             self.start_time_local, self.end_time_local = parse_datetime_to_local(
