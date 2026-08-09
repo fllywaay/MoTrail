@@ -1,7 +1,11 @@
 # Onelap (顽鹿运动) sync script — rewritten 2026-08 for the new u.onelap.cn API.
 # The old www.onelap.cn/api/login + /analysis/list endpoints are dead.
-# New flow: POST /api/login -> token, POST /api/otm/ride_record/list -> ids,
-# GET /api/otm/ride_record/analysis/{id} -> fileKey, GET .../fit/{base64(fileKey)} -> FIT bytes.
+# New flow: POST /api/login -> token (+ session cookie), POST /api/otm/ride_record/list
+# -> ids, GET /api/otm/ride_record/analysis/{id} -> fileKey,
+# GET .../fit/{base64(fileKey)} -> FIT bytes.
+# IMPORTANT: the fit-download endpoint appears to require the session cookie set
+# during login *in addition to* the Authorization header, so we use a
+# requests.Session() throughout to carry cookies automatically.
 
 import os
 import hashlib
@@ -21,10 +25,18 @@ class Onelap:
         self.account = account
         self.password = password
         self.token = None
+        self.session = requests.Session()
+        self.session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                "Origin": "https://u.onelap.cn",
+                "Referer": "https://u.onelap.cn/recordPage",
+            }
+        )
 
     def login(self):
         pwd_md5 = hashlib.md5(self.password.encode()).hexdigest()
-        r = requests.post(
+        r = self.session.post(
             LOGIN_URL, json={"account": self.account, "password": pwd_md5}
         )
         r.raise_for_status()
@@ -33,19 +45,15 @@ class Onelap:
         if not data:
             raise RuntimeError(f"Login failed: {result}")
         self.token = data[0]["token"]
+        self.session.headers.update({"Authorization": self.token})
         print("Logged in.")
-
-    def _headers(self):
-        return {"Authorization": self.token}
 
     def get_activities(self, page_size=100):
         activities = []
         page = 1
         while True:
-            r = requests.post(
-                LIST_URL,
-                headers=self._headers(),
-                json={"page": page, "limit": page_size},
+            r = self.session.post(
+                LIST_URL, json={"page": page, "limit": page_size}
             )
             r.raise_for_status()
             result = r.json()
@@ -59,7 +67,7 @@ class Onelap:
         return activities
 
     def get_file_key(self, record_id):
-        r = requests.get(ANALYSIS_URL.format(record_id), headers=self._headers())
+        r = self.session.get(ANALYSIS_URL.format(record_id))
         r.raise_for_status()
         result = r.json()
         record = result.get("data", {}).get("ridingRecord", {})
@@ -67,9 +75,20 @@ class Onelap:
 
     def download_fit(self, file_key):
         encoded = base64.b64encode(file_key.encode()).decode()
-        r = requests.get(FIT_URL.format(encoded), headers=self._headers())
+        r = self.session.get(FIT_URL.format(encoded))
         r.raise_for_status()
-        return r.content
+        content = r.content
+        # A real FIT file has ".FIT" as an ASCII marker at byte offset 8-11.
+        # If it's not there, we almost certainly got an error page/JSON back
+        # instead of the binary file — surface that instead of writing garbage.
+        if len(content) < 12 or content[8:12] != b".FIT":
+            preview = content[:200]
+            raise RuntimeError(
+                f"Downloaded content for {file_key} doesn't look like a FIT "
+                f"file (content-type={r.headers.get('Content-Type')}, "
+                f"first bytes={preview!r})"
+            )
+        return content
 
     def download_onelap_data(self):
         os.makedirs(FIT_FOLDER, exist_ok=True)
@@ -87,7 +106,11 @@ class Onelap:
             if not file_key:
                 print(f"no fileKey for {record_id}, skipped")
                 continue
-            content = self.download_fit(file_key)
+            try:
+                content = self.download_fit(file_key)
+            except RuntimeError as e:
+                print(f"failed to download {record_id}: {e}")
+                continue
             with open(file_path, "wb") as f:
                 f.write(content)
             print(f"downloaded {record_id}.fit")
