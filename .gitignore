@@ -160,3 +160,10 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Raw activity files — now synced to Google Drive instead of committed to git
+# (keeps precise GPS data for home/work start-end points out of the public repo)
+GPX_OUT/*
+!GPX_OUT/.gitkeep
+FIT_OUT/*
+!FIT_OUT/.gitkeep
