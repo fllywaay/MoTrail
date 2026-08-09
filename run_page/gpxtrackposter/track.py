@@ -299,6 +299,11 @@ class Track:
                 manufacturer = record.get("manufacturer", "Unknown")
                 self.source = f'{manufacturer} {product} fit'
                 break
+        # raw FIT files generally don't carry a human-entered activity name
+        # (unlike GPX/Komoot), so fall back to the same "<type> from <source>"
+        # convention used for unnamed GPX tracks.
+        if not self.name:
+            self.name = self.type + " from " + self.source
         if self.polyline_container:
             self.start_time_local, self.end_time_local = parse_datetime_to_local(
                 self.start_time, self.end_time, self.polyline_container[0]
