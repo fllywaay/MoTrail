@@ -300,10 +300,20 @@ class Track:
                 self.source = f'{manufacturer} {product} fit'
                 break
         # raw FIT files generally don't carry a human-entered activity name
-        # (unlike GPX/Komoot), so fall back to the same "<type> from <source>"
-        # convention used for unnamed GPX tracks.
-        if not self.name:
-            self.name = self.type + " from " + self.source
+        # (unlike GPX/Komoot). Onelap's own web UI doesn't store a real name
+        # either (its "name" field is null) — it just displays
+        # "<local start time>的<运动类型>" client-side, so we replicate that
+        # same convention here instead of a generic English fallback.
+        FIT_TYPE_CN = {
+            "cycling": "骑行",
+            "running": "跑步",
+            "hiking": "徒步",
+            "walking": "步行",
+            "swimming": "游泳",
+            "training": "训练",
+            "mountaineering": "登山",
+            "rowing": "划船",
+        }
         if self.polyline_container:
             self.start_time_local, self.end_time_local = parse_datetime_to_local(
                 self.start_time, self.end_time, self.polyline_container[0]
@@ -315,6 +325,9 @@ class Track:
             self.start_time_local, self.end_time_local = parse_datetime_to_local(
                 self.start_time, self.end_time, None
             )
+        if not self.name:
+            type_cn = FIT_TYPE_CN.get(self.type, self.type)
+            self.name = f"{self.start_time_local:%Y-%m-%d %H:%M:%S}的{type_cn}"
 
     def append(self, other):
         """Append other track to self."""
