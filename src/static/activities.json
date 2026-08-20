@@ -8233,5 +8233,20 @@
 "average_speed": 5.446,
 "source": "",
 "streak": 1
+},
+{
+"run_id": 1787205724237,
+"name": "Hike (Completed)",
+"distance": 3316.9457957128293,
+"moving_time": "1:35:35.053000",
+"type": "Run",
+"start_date": "2026-08-20 14:02:04",
+"start_date_local": "2026-08-20 22:02:04",
+"location_country": "\u65f6\u4ee3\u5357\u6e7e\u5317\u5cb8, \u795e\u6e7e\u9547, \u4e2d\u5c71\u5e02, \u5e7f\u4e1c\u7701, \u4e2d\u56fd",
+"summary_polyline": "wffgC}`~rTe@~BuB`CzByBI]rAqE\\Kd@p@\\q@h@mEdEv@z@lAYbAj@`A?g@fAmAbEu@Ts@`BUk@aAmAe@aAyCz@nCrD|BbDvFmEkGsB`@Ov@oEz@w@|Am@aAZgAq@y@uEy@e@hE[Z_AUmAlF{BxBTmA",
+"average_heartrate": null,
+"average_speed": 0.5783635819429793,
+"source": "\u9e4f",
+"streak": 1
 }
 ]
