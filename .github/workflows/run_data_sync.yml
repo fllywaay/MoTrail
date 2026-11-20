@@ -208,6 +208,7 @@ jobs:
 
       - name: Set up rclone for Google Drive
         if: env.SYNC_KOMOOT == 'true' || env.SYNC_ONELAP == 'true'
+        continue-on-error: true
         run: |
           curl https://rclone.org/install.sh | sudo bash
           mkdir -p ~/.config/rclone
@@ -221,6 +222,7 @@ jobs:
 
       - name: Upload raw GPX/FIT files to Google Drive
         if: env.SYNC_KOMOOT == 'true' || env.SYNC_ONELAP == 'true'
+        continue-on-error: true
         run: |
           rclone copy GPX_OUT gdrive:GPX_OUT -v --stats-one-line
           rclone copy FIT_OUT gdrive:FIT_OUT -v --stats-one-line
